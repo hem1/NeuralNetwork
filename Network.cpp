@@ -42,10 +42,8 @@ void Network:: feedforward(const vector<double> &inputs)
         {
 //            cout<<"\nneuron "<< n<<endl;
             my_layer[layer][n].feedforward(prevLayer);
-           
         }
-    }
-    
+    }    
 }
 
 
@@ -54,7 +52,6 @@ void Network:: backPropagation(const vector<double> &actualOutput)
 {
 //    cout<<"\n------------BACK PROPAGATION--------------------\n";
     Layer &outputLayer = my_layer.back();
-   
 
     //Calculate delta for output layer
     for(int i = 0; i< outputLayer.size() -1 ;i++)
@@ -62,7 +59,6 @@ void Network:: backPropagation(const vector<double> &actualOutput)
         outputLayer[i].calcDeltaOutput(actualOutput[i]);
     }
 //    cout<<"-----------"<<endl;
-    
 
     //Calculate delta for hidden layers
     
@@ -77,9 +73,7 @@ void Network:: backPropagation(const vector<double> &actualOutput)
             hiddenLayer[i].calcHiddenDelta(nextLayer);
         }
     }
-    
-    
-    
+   
     //Update Weights
 //    cout<<"\n\nAdjust weights";
     for(int layerNum = my_layer.size()-2; layerNum >= 0; --layerNum)
@@ -94,7 +88,6 @@ void Network:: backPropagation(const vector<double> &actualOutput)
             layer[n].updateWeights(layer, nextLayer);
         }
     }
-    
 }
 
 int Network:: getResult()
@@ -113,8 +106,6 @@ int Network:: getResult()
 //    cout<<my_layer.back()[0].getOutputVal();
     return res;
 }
-
-
 
 double Network:: getError(double y)
 {

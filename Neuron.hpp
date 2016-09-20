@@ -13,6 +13,7 @@
 #include <vector>
 #include <stdlib.h>
 #include <cmath>
+#include <cstdint>
 
 using namespace std;
 
